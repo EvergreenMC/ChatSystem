@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ChatSystem">
+    <output-path>$PROJECT_DIR$/out/artifacts/ChatSystem</output-path>
+    <root id="archive" name="ChatSystem.jar">
+      <element id="file-copy" path="$PROJECT_DIR$/../AdviSystem/src/main/resources/config.yml" />
+      <element id="module-output" name="ChatSystemServer" />
+    </root>
+  </artifact>
+</component>

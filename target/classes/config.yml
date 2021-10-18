@@ -1,0 +1,7 @@
+#Version 1.0-SNAPSHOT von xGamerTim
+prefix.global: '§8§l| §aAdventuria §8» §7'
+
+chat.team: '§8§l| §bTeamChat §8§l| §7'
+chat.local: '§7[Local] '
+chat.global: '§7[Global] '
+chat.spy: '§7[Spy] '

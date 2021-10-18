@@ -1,0 +1,9 @@
+name: ChatSystem
+author: xGamerTim
+version: ${project.version}
+api-version: 1.17
+depend:
+  - CloudNet-Bridge
+  - LuckPerms
+
+main: eu.adventuria.chatsystem.ChatSystem
