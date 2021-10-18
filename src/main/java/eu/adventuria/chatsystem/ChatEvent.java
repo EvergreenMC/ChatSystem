@@ -69,7 +69,7 @@ public class ChatEvent implements Listener {
             e.setCancelled(true);
         }else if(e.getMessage().startsWith("@l")){ // Lokalchat im Bereich von 60 Blöcken
             sendLocalMessage(e, msg.replace("@l", ""));
-        }else if(e.getMessage().startsWith("@g")){ //
+        }else if(e.getMessage().startsWith("@g")){ // Globalchat an alle Server
             final BaseComponent[] base = new ComponentBuilder(prefix_global).append(color + rankname +  " §8● " + nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Server: §e" + cp.getConnectedService().getServerName()).create())).append(" §8» §7" + msg.replaceAll("%", "%%").replace("@g", "")).reset().create();
             BaseComponentMessenger.broadcastMessage(base);
             e.setCancelled(true);
@@ -109,8 +109,8 @@ public class ChatEvent implements Listener {
 /**
  *      Chatsystem
  *
- *      Für jeden Server einen eigenen Chat
- *      Der Freebuildchat ist der Hauptchat
+ *      Für jeden Server einen eigenen Chat [ ]
+ *      Der Freebuildchat ist der Hauptchat [X]
  *      über den man über andere Server mit (@g) schreiben kann
  *      Man kann den Freebuildchat nur sehen wenn dieser in den Einstellungen aktiviert ist.
  *      Lokalchat mit (@l) wo nur Lokal nachricht im Bereich 60 Blöcke gelesen werden können
