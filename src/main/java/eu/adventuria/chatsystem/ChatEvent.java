@@ -119,20 +119,4 @@ public class ChatEvent implements Listener {
  *      Netzwerkspeziell: Freebuildchat -> Man kann mit @g im Freebuildchat schreiben welcher der Globale chat ist
  *                        TeamChat -> Kann überall gelesen werden von Spielern mit der Permission (adventuria.chat.team)
  *
- *
- *      final BaseComponent[] acceptP = new ComponentBuilder(BungeeSystem.prefix).append(" §8[§a§lANNEHMEN§8] ").event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party accept " + name.getName())).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§e/party accept " + name.getName()).create())).append("").reset().create();
- *
- *            CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServices().forEach(serviceInfoSnapshot -> {
- *                 serviceInfoSnapshot.getProperty(BridgeServiceProperty.PLAYERS).ifPresent(servicePlayers -> {
- *                     for(ServicePlayer servicePlayer : servicePlayers){
- *                         ICloudPlayer cloudPlayer = BridgePlayerManager.getInstance().getOnlinePlayer(servicePlayer.getUniqueId());
- *                         if(cloudPlayer != null){
- *                             cloudPlayer.getPlayerExecutor().sendChatMessage("Test");
- *                         }
- *                     }
- *                 });
- *             });
- *
- *
- *
  */
