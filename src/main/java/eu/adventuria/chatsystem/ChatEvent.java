@@ -1,7 +1,10 @@
 package eu.adventuria.chatsystem;
 
+import de.dytanic.cloudnet.CloudNet;
+import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.ext.bridge.BaseComponentMessenger;
 import de.dytanic.cloudnet.ext.bridge.BridgePlayerManager;
+import de.dytanic.cloudnet.ext.bridge.node.CloudNetBridgeModule;
 import de.dytanic.cloudnet.ext.bridge.player.ICloudPlayer;
 
 import net.luckperms.api.LuckPermsProvider;

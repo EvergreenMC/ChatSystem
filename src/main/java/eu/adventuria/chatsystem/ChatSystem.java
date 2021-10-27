@@ -19,7 +19,7 @@ public class ChatSystem extends JavaPlugin {
         this.loadConfig();
         this.saveDefaultConfig();
 
-        prefix = ChatSystem.getInstance().getConfig().getString("prefix.global");
+        prefix = getInstance().getConfig().getString("prefix.global");
         cs.sendMessage(prefix + "§aDas Plugin wurde aktiviert.");
         enableEvents();
     }
