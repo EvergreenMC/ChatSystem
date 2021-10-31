@@ -1,6 +1,14 @@
 #Version ${project.version} von xGamerTim
 prefix.global: '§8§l| §aAdventuria §8» §7'
+prefix.warning: '§8§l| §eWarning §8» §c'
+
 chat.team: '§7[§b§lTeamChat§7] '
 chat.local: '§7[Local] '
 chat.global: '§7[Global] '
 chat.spy: '§7[Spy] '
+
+arango.port: 8529
+arango.host: localhost
+arango.user: Globall
+arango.password: password
+arango.database: database

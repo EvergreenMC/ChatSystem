@@ -31,5 +31,10 @@
       <option name="name" value="cloudnet-releases" />
       <option name="url" value="https://repo.cloudnetservice.eu/repository/releases/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="Maven2" />
+      <option name="name" value="Maven2" />
+      <option name="url" value="https://repo1.maven.org/maven2/" />
+    </remote-repository>
   </component>
 </project>
