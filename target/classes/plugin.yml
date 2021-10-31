@@ -7,3 +7,6 @@ depend:
   - LuckPerms
 
 main: eu.adventuria.chatsystem.ChatSystem
+
+commands:
+  - chat
