@@ -113,7 +113,7 @@ public class ChatEvent implements Listener {
  *      Chatsystem
  *
  *      Für jeden Server einen eigenen Chat [ ]
- *      Der Freebuildchat ist der Hauptchat [X]
+ *      Der Freebuildchat ist der Hauptchat [ ]
  *      über den man über andere Server mit (@g) schreiben kann
  *      Man kann den Freebuildchat nur sehen wenn dieser in den Einstellungen aktiviert ist.
  *      Lokalchat mit (@l) wo nur Lokal nachricht im Bereich 60 Blöcke gelesen werden können
