@@ -20,10 +20,14 @@ public class ChatSystem extends JavaPlugin {
         this.saveDefaultConfig();
 
         prefix = Messages.prefix;
-        cs.sendMessage(prefix + "§aDas Plugin wurde aktiviert.");
         enableEvents();
-        ArangoUtils.createDatabase(ArangoMethods.database);
 
+        if(ArangoUtils.isConnected()){
+            ArangoUtils.createDatabase(ArangoMethods.database);
+            ArangoUtils.createCollection(ArangoUtils.database, "ChatSystem");
+
+            cs.sendMessage(prefix + "§aDas Plugin wurde aktiviert.");
+        }
     }
 
     @Override

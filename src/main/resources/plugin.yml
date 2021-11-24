@@ -9,4 +9,4 @@ depend:
 main: eu.adventuria.chatsystem.ChatSystem
 
 commands:
-  - chat
+  chat:
