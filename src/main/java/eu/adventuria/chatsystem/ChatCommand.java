@@ -12,7 +12,7 @@ public class ChatCommand implements CommandExecutor {
         if(sender instanceof Player) {
             Player p = (Player) sender;
             if(strings.length == 0){
-                p.sendMessage(Messages.prefix + "§3Nutze: /chat <toggle,check>");
+                p.sendMessage(Messages.prefix + "§eNutze: /chat <toggle,check>");
             }else if(strings[0].equalsIgnoreCase("check") && strings.length == 1){
                 if(ArangoMethods.getGlobalChatBoolean(p.getUniqueId().toString()) == true){
                     p.sendMessage(Messages.prefix + "§7Du hast den Globall-Chat derzeit §aAktiviert§7.");
