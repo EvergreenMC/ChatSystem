@@ -20,6 +20,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,12 @@ public class ChatEvent implements Listener {
         }else{
             e.setFormat(color + rankname +  " §8● " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
         }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onJoin(PlayerJoinEvent e){
+        Player p = e.getPlayer();
+        ArangoMethods.changeGlobalChatBoolean(p.getUniqueId().toString());
     }
 
     public void sendLocalMessage(AsyncPlayerChatEvent e, String msg){

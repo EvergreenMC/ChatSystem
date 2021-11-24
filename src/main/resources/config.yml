@@ -9,6 +9,6 @@ chat.spy: '§7[Spy] '
 
 arango.port: 8529
 arango.host: localhost
-arango.user: Globall
+arango.user: user
 arango.password: password
 arango.database: database

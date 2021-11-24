@@ -21,6 +21,7 @@ public class ChatSystem extends JavaPlugin {
 
         prefix = Messages.prefix;
         enableEvents();
+        enableCommands();
 
         if(ArangoUtils.isConnected()){
             ArangoUtils.createDatabase(ArangoMethods.database);

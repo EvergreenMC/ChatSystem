@@ -11,15 +11,21 @@ public class ChatCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String s, @NotNull String[] strings) {
         if(sender instanceof Player) {
             Player p = (Player) sender;
-            Boolean chat = ArangoMethods.getGlobalChatBoolean(p.getUniqueId().toString());
-            if(strings[0].equalsIgnoreCase("check") && strings.length == 1){
-                if(chat == true){
+            if(strings.length == 0){
+                p.sendMessage(Messages.prefix + "§3Nutze: /chat <toggle,check>");
+            }else if(strings[0].equalsIgnoreCase("check") && strings.length == 1){
+                if(ArangoMethods.getGlobalChatBoolean(p.getUniqueId().toString()) == true){
                     p.sendMessage(Messages.prefix + "§7Du hast den Globall-Chat derzeit §aAktiviert§7.");
                 }else{
                     p.sendMessage(Messages.prefix + "§7Du hast den Globall-Chat derzeit §cDeaktiviert§7.");
                 }
             }else if(strings[0].equalsIgnoreCase("toggle")){
-                ArangoMethods.setGlobalChatBoolean(p.getUniqueId().toString());
+                ArangoMethods.changeGlobalChatBoolean(p.getUniqueId().toString());
+                if(ArangoMethods.getGlobalChatBoolean(p.getUniqueId().toString()) == true){
+                    p.sendMessage(Messages.prefix + "§7Du hast den Globall-Chat §aAktiviert§7.");
+                }else{
+                    p.sendMessage(Messages.prefix + "§7Du hast den Globall-Chat §cDeaktiviert§7.");
+                }
             }
         }
         return false;
