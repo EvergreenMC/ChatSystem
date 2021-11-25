@@ -13,7 +13,7 @@ public class ArangoMethods {
     public static void changeGlobalChatBoolean(String uuid){
         if(ArangoUtils.arangoDB.db(database).collection(Collection).getDocument(uuid, BaseDocument.class) == null){
             BaseDocument base = new BaseDocument();
-            base.addAttribute("name", Bukkit.getOfflinePlayer(uuid).getName());
+            base.addAttribute("name", Bukkit.getOfflinePlayer(uuid).getPlayer().getName());
             base.addAttribute("boolean", true);
             base.setKey(uuid);
             ArangoUtils.createDocument(database, Collection, base, uuid);
