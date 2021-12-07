@@ -68,18 +68,22 @@ public class ChatEvent implements Listener {
             msg = msg.replaceAll("&", "§");
         }
         String[] msglist = msg.split(" ");
-        if(e.getMessage().startsWith("%") && p.hasPermission("adventuria.chat.team")){
-            final BaseComponent[] base = new ComponentBuilder(prefix_team).append(nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Rang: " + color + rank).create())).append(" §8» §7" + msg.replace("%", "")).reset().create();
-            BaseComponentMessenger.broadcastMessage(base, "adventuria.chat.team");
-            e.setCancelled(true);
-        }else if(e.getMessage().startsWith("@l")){ // Lokalchat im Bereich von 60 Blöcken
-            sendLocalMessage(e, msg.replace("@l", ""));
-        }else if(e.getMessage().startsWith("@g")){ // Globalchat an alle Server
-            final BaseComponent[] base = new ComponentBuilder(prefix_global).append(color + rankname +  " §8● " + nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Server: §e" + cp.getConnectedService().getServerName()).create())).append(" §8» §7" + msg.replaceAll("%", "%%").replace("@g", "")).reset().create();
-            BaseComponentMessenger.broadcastMessage(base);
-            e.setCancelled(true);
+        if(msg.length() > 0){
+            if(e.getMessage().startsWith("%") && p.hasPermission("adventuria.chat.team")){
+                final BaseComponent[] base = new ComponentBuilder(prefix_team).append(nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Rang: " + color + rank).create())).append(" §8» §7" + msg.replace("%", "")).reset().create();
+                BaseComponentMessenger.broadcastMessage(base, "adventuria.chat.team");
+                e.setCancelled(true);
+            }else if(e.getMessage().startsWith("@l")){ // Lokalchat im Bereich von 60 Blöcken
+                sendLocalMessage(e, msg.replace("@l", ""));
+            }else if(e.getMessage().startsWith("@g")){ // Globalchat an alle Server
+                final BaseComponent[] base = new ComponentBuilder(prefix_global).append(color + rankname +  " §8● " + nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Server: §e" + cp.getConnectedService().getServerName()).create())).append(" §8» §7" + msg.replaceAll("%", "%%").replace("@g", "")).reset().create();
+                BaseComponentMessenger.broadcastMessage(base);
+                e.setCancelled(true);
+            }else{
+                e.setFormat(color + rankname +  " §8● " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
+            }
         }else{
-            e.setFormat(color + rankname +  " §8● " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
+            p.sendMessage(Messages.prefix + "§cDu musst mindestens einen Buchstaben schreiben!");
         }
     }
 
