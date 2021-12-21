@@ -4,6 +4,7 @@ import de.dytanic.cloudnet.ext.bridge.BaseComponentMessenger;
 import de.dytanic.cloudnet.ext.bridge.BridgePlayerManager;
 import de.dytanic.cloudnet.ext.bridge.player.ICloudPlayer;
 
+import net.kyori.adventure.text.Component;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.cacheddata.CachedPermissionData;
 import net.luckperms.api.model.user.UserManager;
@@ -12,16 +13,13 @@ import net.md_5.bungee.api.chat.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.entity.AbstractVillager;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.VillagerAcquireTradeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.jetbrains.annotations.NotNull;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +89,17 @@ public class ChatEvent implements Listener {
     public void onJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         ArangoMethods.changeGlobalChatBoolean(p.getUniqueId().toString());
+
+        final net.kyori.adventure.text.TextComponent component = Component.text("§7Der Spieler ").append(Component.text(color + nickname)).append(Component.text(" §7hat das Spiel betreten."));
+        e.joinMessage(component);
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent e){
+        Player p = e.getPlayer();
+
+        final net.kyori.adventure.text.TextComponent component = Component.text("§7Der Spieler ").append(Component.text(color + nickname)).append(Component.text(" §7hat das Spiel verlassen."));
+        e.quitMessage();
     }
 
     public void sendLocalMessage(AsyncPlayerChatEvent e, String msg){

@@ -44,7 +44,7 @@ public class ConfigManager {
 
     private void standartConfigInput() {
         this.updateFileConfiguration();
-        this.cfg.options().header("+ File created by AdviSystem +");
+        this.cfg.options().header("+ File created by ChatSystem +");
         this.save();
     }
 
