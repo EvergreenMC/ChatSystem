@@ -90,6 +90,9 @@ public class ChatEvent implements Listener {
         Player p = e.getPlayer();
         ArangoMethods.changeGlobalChatBoolean(p.getUniqueId().toString());
 
+        this.rankname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getDisplayName();
+        this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
+
         final net.kyori.adventure.text.TextComponent component = Component.text("§7Der Spieler ").append(Component.text(color + nickname)).append(Component.text(" §7hat das Spiel betreten."));
         e.joinMessage(component);
     }
