@@ -22,6 +22,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ChatEvent implements Listener {
@@ -66,6 +67,10 @@ public class ChatEvent implements Listener {
             msg = msg.replaceAll("&", "§");
         }
         String[] msglist = msg.split(" ");
+        if(msglist.toString().contains("arsch")){
+            e.setCancelled(true);
+            p.sendMessage(Messages.prefix + "§cDu hast ein Wort geschrieben welches im Chat nicht erwünscht ist!");
+        }
         if(msg.length() > 0){
             if(e.getMessage().startsWith("%") && p.hasPermission("adventuria.chat.team")){
                 final BaseComponent[] base = new ComponentBuilder(prefix_team).append(nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Rang: " + color + rank).create())).append(" §8» §7" + msg.replace("%", "")).reset().create();
@@ -85,13 +90,13 @@ public class ChatEvent implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         ArangoMethods.changeGlobalChatBoolean(p.getUniqueId().toString());
 
-        this.rankname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getDisplayName();
         this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
+        this.nickname = color + p.getName();
 
         final net.kyori.adventure.text.TextComponent component = Component.text("§7Der Spieler ").append(Component.text(color + nickname)).append(Component.text(" §7hat das Spiel betreten."));
         e.joinMessage(component);
@@ -101,8 +106,11 @@ public class ChatEvent implements Listener {
     public void onQuit(PlayerQuitEvent e){
         Player p = e.getPlayer();
 
+        this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
+        this.nickname = color + p.getName();
+
         final net.kyori.adventure.text.TextComponent component = Component.text("§7Der Spieler ").append(Component.text(color + nickname)).append(Component.text(" §7hat das Spiel verlassen."));
-        e.quitMessage();
+        e.quitMessage(component);
     }
 
     public void sendLocalMessage(AsyncPlayerChatEvent e, String msg){
