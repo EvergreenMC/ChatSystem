@@ -22,7 +22,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ChatEvent implements Listener {
@@ -140,18 +139,3 @@ public class ChatEvent implements Listener {
         }
     }
 }
-
-/**
- *      Chatsystem
- *
- *      Für jeden Server einen eigenen Chat [ ]
- *      Der Freebuildchat ist der Hauptchat [ ]
- *      über den man über andere Server mit (@g) schreiben kann
- *      Man kann den Freebuildchat nur sehen wenn dieser in den Einstellungen aktiviert ist.
- *      Lokalchat mit (@l) wo nur Lokal nachricht im Bereich 60 Blöcke gelesen werden können
- *
- *      Serverspeziell: Lokalchat (@l]
- *      Netzwerkspeziell: Freebuildchat -> Man kann mit @g im Freebuildchat schreiben welcher der Globale chat ist
- *                        TeamChat -> Kann überall gelesen werden von Spielern mit der Permission (adventuria.chat.team)
- *
- */
