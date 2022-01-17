@@ -11,19 +11,23 @@ public class ArangoMethods {
     public static String Collection = "ChatSystem";
 
     public static void changeGlobalChatBoolean(String uuid){
-        if(ArangoUtils.arangoDB.db(database).collection(Collection).getDocument(uuid, BaseDocument.class) == null){
-            BaseDocument base = new BaseDocument();
-            base.addAttribute("name", Bukkit.getOfflinePlayer(uuid).getPlayer().getName());
-            base.addAttribute("boolean", true);
-            base.setKey(uuid);
-            ArangoUtils.createDocument(database, Collection, base, uuid);
-        }else{
+        if(ArangoUtils.arangoDB.db(database).collection(Collection).getDocument(uuid, BaseDocument.class) != null){
             BaseDocument base = new BaseDocument();
             if(getGlobalChatBoolean(uuid) == true){
                 base.addAttribute("boolean", false);
             }else{
                 base.addAttribute("boolean", true);
             }
+            base.setKey(uuid);
+            ArangoUtils.createDocument(database, Collection, base, uuid);
+        }
+    }
+
+    public static void createDefault(String uuid){
+        if(ArangoUtils.arangoDB.db(database).collection(Collection).getDocument(uuid, BaseDocument.class) == null){
+            BaseDocument base = new BaseDocument();
+            base.addAttribute("name", Bukkit.getOfflinePlayer(uuid).getName());
+            base.addAttribute("boolean", true);
             base.setKey(uuid);
             ArangoUtils.createDocument(database, Collection, base, uuid);
         }

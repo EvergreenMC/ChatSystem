@@ -92,13 +92,14 @@ public class ChatEvent implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
-        ArangoMethods.changeGlobalChatBoolean(p.getUniqueId().toString());
 
         this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
         this.nickname = color + p.getName();
 
         final net.kyori.adventure.text.TextComponent component = Component.text("§7Der Spieler ").append(Component.text(color + nickname)).append(Component.text(" §7hat das Spiel betreten."));
         e.joinMessage(component);
+
+        ArangoMethods.createDefault(p.getUniqueId().toString());
     }
 
     @EventHandler
