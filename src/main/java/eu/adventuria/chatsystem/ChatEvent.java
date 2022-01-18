@@ -78,11 +78,15 @@ public class ChatEvent implements Listener {
             }else if(e.getMessage().startsWith("@l")){ // Lokalchat im Bereich von 60 Blöcken
                 sendLocalMessage(e, msg.replace("@l", ""));
             }else if(e.getMessage().startsWith("@g")){ // Globalchat an alle Server
-                final BaseComponent[] base = new ComponentBuilder(prefix_global).append(color + rankname +  " §8● " + nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Server: §e" + cp.getConnectedService().getServerName()).create())).append(" §8» §7" + msg.replaceAll("%", "%%").replace("@g", "")).reset().create();
+                final BaseComponent[] base = new ComponentBuilder(prefix_global).append("§8[" + color + rankname + "§8] " + nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Server: §e" + cp.getConnectedService().getServerName()).create())).append(" §8» §7" + msg.replaceAll("%", "%%").replace("@g", "")).reset().create();
                 BaseComponentMessenger.broadcastMessage(base);
                 e.setCancelled(true);
             }else{
-                e.setFormat(color + rankname +  " §8● " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
+                e.setCancelled(true);
+                final BaseComponent[] base = new ComponentBuilder("§8[" + color + rankname + "§8] ").append(nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Rang: " + color + rank).create())).append(" §8» §7" + msg.replace("%", "")).reset().create();
+                for(Player all : Bukkit.getOnlinePlayers()){
+                    all.sendMessage(base);
+                }
             }
         }else{
             p.sendMessage(Messages.prefix + "§cDu musst mindestens einen Buchstaben schreiben!");
@@ -128,15 +132,17 @@ public class ChatEvent implements Listener {
                 e.getRecipients().remove(near);
                 plo.remove(near.getName());
             }
+
+
         }
 
-        e.setFormat(prefix_local+ color + rankname +  " §8● " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
+        e.setFormat(prefix_local + "§8[" + color + rankname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.hasPermission("advisystem.spychat.see") &&
                     !plo.contains(player.getName()) && this.nickname != player
                     .getName())
-                player.sendMessage(prefix_spy + color + rankname +  " §8● " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
+                player.sendMessage(prefix_spy + "§8[" + color + rankname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
         }
     }
 }
