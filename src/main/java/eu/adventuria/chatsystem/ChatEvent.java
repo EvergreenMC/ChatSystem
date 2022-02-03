@@ -4,12 +4,13 @@ import de.dytanic.cloudnet.ext.bridge.BaseComponentMessenger;
 import de.dytanic.cloudnet.ext.bridge.BridgePlayerManager;
 import de.dytanic.cloudnet.ext.bridge.player.ICloudPlayer;
 
-import net.kyori.adventure.text.Component;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.cacheddata.CachedPermissionData;
 import net.luckperms.api.model.user.UserManager;
 
-import net.md_5.bungee.api.chat.*;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -23,15 +24,18 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ChatEvent implements Listener {
 
-    ChatSystem pl;
-    CachedPermissionData Permission;
-    String nickname;
-    String color;
-    String rank;
-    String rankname;
+    static ChatSystem pl;
+    static CachedPermissionData Permission;
+    static String nickname;
+    static String color;
+    static String rank;
+    static String displayname;
+    static String rankname;
 
     String prefix_local;
     String prefix_global;
@@ -40,7 +44,7 @@ public class ChatEvent implements Listener {
 
     private static UserManager um = LuckPermsProvider.get().getUserManager();
 
-    public ChatEvent(ChatSystem instance){
+    public ChatEvent(ChatSystem instance) {
         pl = instance;
         Bukkit.getPluginManager().registerEvents(this, instance);
 
@@ -50,74 +54,77 @@ public class ChatEvent implements Listener {
         prefix_team = pl.getConfig().getString("chat.team");
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onChat(AsyncPlayerChatEvent e){
+    public final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
+
+    private String format(String msg) {
+        Matcher match = pattern.matcher(msg);
+        while (match.find()) {
+            String color = msg.substring(match.start(), match.end());
+            msg = msg.replace(color, ChatColor.of(color) + "");
+            match = pattern.matcher(msg);
+        }
+        return ChatColor.translateAlternateColorCodes('&', msg);
+    }
+
+   @EventHandler(priority = EventPriority.HIGH)
+    public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         ICloudPlayer cp = BridgePlayerManager.getInstance().getOnlinePlayer(p.getUniqueId());
 
         this.rank = um.getUser(p.getUniqueId()).getPrimaryGroup();
-        this.rankname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getDisplayName();
-        this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
+        this.displayname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getDisplayName();
+        this.rankname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getCachedData().getMetaData().getSuffix();
+        this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix();
         this.nickname = color + p.getName();
         this.Permission = LuckPermsProvider.get().getUserManager().getUser(p.getUniqueId()).getCachedData().getPermissionData();
 
-        String msg = e.getMessage();
-        if(Permission.checkPermission("adventuria.chat.color").asBoolean()){
-            msg = msg.replaceAll("&", "§");
-        }
-        String[] msglist = msg.split(" ");
-        if(msglist.toString().contains("arsch")){
-            e.setCancelled(true);
-            p.sendMessage(Messages.prefix + "§cDu hast ein Wort geschrieben welches im Chat nicht erwünscht ist!");
-        }
-        if(msg.length() > 0){
-            if(e.getMessage().startsWith("%") && p.hasPermission("adventuria.chat.team")){
-                final BaseComponent[] base = new ComponentBuilder(prefix_team).append(nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Rang: " + color + rank).create())).append(" §8» §7" + msg.replace("%", "")).reset().create();
+        String msg = format(e.getMessage());
+
+        if (msg.length() > 0) {
+            if (e.getMessage().startsWith("%") && p.hasPermission("adventuria.chat.team")) {
+                final BaseComponent[] base = new ComponentBuilder(prefix_team).appendLegacy(format(nickname)).appendLegacy(" §8» §7" + format(msg.replace("%", ""))).create();
                 BaseComponentMessenger.broadcastMessage(base, "adventuria.chat.team");
                 e.setCancelled(true);
-            }else if(e.getMessage().startsWith("@l")){ // Lokalchat im Bereich von 60 Blöcken
+            } else if (e.getMessage().startsWith("@l")) {
                 sendLocalMessage(e, msg.replace("@l", ""));
-            }else if(e.getMessage().startsWith("@g")){ // Globalchat an alle Server
-                final BaseComponent[] base = new ComponentBuilder(prefix_global).append("§8[" + color + rankname + "§8] " + nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Server: §e" + cp.getConnectedService().getServerName()).create())).append(" §8» §7" + msg.replaceAll("%", "%%").replace("@g", "")).reset().create();
+            } else if (e.getMessage().startsWith("@g") && e.getMessage().startsWith("!")) {
+                final BaseComponent[] base = new ComponentBuilder(prefix_global).appendLegacy("§8[" + format(color) + displayname + "§8] " + format(nickname)).appendLegacy(" §8» §7" + format(msg.replaceAll("%", "%%").replace("@g", ""))).create();
                 BaseComponentMessenger.broadcastMessage(base);
                 e.setCancelled(true);
-            }else{
+            } else {
                 e.setCancelled(true);
-                final BaseComponent[] base = new ComponentBuilder("§8[" + color + rankname + "§8] ").append(nickname).event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Rang: " + color + rank).create())).append(" §8» §7" + msg.replace("%", "")).reset().create();
+                final BaseComponent[] base = new ComponentBuilder("").appendLegacy("§8[" + format(color) + displayname + "§8] " + format(nickname) + " §8» §7" + format(msg)).create();
                 for(Player all : Bukkit.getOnlinePlayers()){
                     all.sendMessage(base);
                 }
             }
-        }else{
+        } else {
             p.sendMessage(Messages.prefix + "§cDu musst mindestens einen Buchstaben schreiben!");
         }
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
-    public void onJoin(PlayerJoinEvent e){
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
 
-        this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
+        this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix();
         this.nickname = color + p.getName();
 
-        final net.kyori.adventure.text.TextComponent component = Component.text("§7Der Spieler ").append(Component.text(color + nickname)).append(Component.text(" §7hat das Spiel betreten."));
-        e.joinMessage(component);
-
+        e.setJoinMessage("§7Der Spieler " + format(nickname) + " §7hat das Spiel betreten.");
         ArangoMethods.createDefault(p.getUniqueId().toString());
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent e){
+    public void onQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
 
         this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
         this.nickname = color + p.getName();
 
-        final net.kyori.adventure.text.TextComponent component = Component.text("§7Der Spieler ").append(Component.text(color + nickname)).append(Component.text(" §7hat das Spiel verlassen."));
-        e.quitMessage(component);
+        e.setQuitMessage("§7Der Spieler " + format(nickname) + " §7hat das Spiel verlasen.");
     }
 
-    public void sendLocalMessage(AsyncPlayerChatEvent e, String msg){
+    public void sendLocalMessage(AsyncPlayerChatEvent e, String msg) {
         int radius = 60;
         Player p = e.getPlayer();
         Location pl = p.getLocation();
@@ -132,17 +139,15 @@ public class ChatEvent implements Listener {
                 e.getRecipients().remove(near);
                 plo.remove(near.getName());
             }
-
-
         }
 
-        e.setFormat(prefix_local + "§8[" + color + rankname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
+        e.setFormat(format(prefix_local + "§8[" + color + rankname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%")));
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.hasPermission("advisystem.spychat.see") &&
                     !plo.contains(player.getName()) && this.nickname != player
                     .getName())
-                player.sendMessage(prefix_spy + "§8[" + color + rankname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%"));
+                player.sendMessage(format(prefix_spy + "§8[" + color + rankname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%")));
         }
     }
 }

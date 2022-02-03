@@ -9,6 +9,7 @@ public class ChatSystem extends JavaPlugin {
 
     private String prefix;
     private ConsoleCommandSender cs = Bukkit.getConsoleSender();
+    private static ScoreboardManager instance2;
 
     public static ChatSystem instance;
 

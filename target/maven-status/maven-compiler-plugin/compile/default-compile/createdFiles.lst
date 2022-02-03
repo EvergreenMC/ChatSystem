@@ -3,5 +3,6 @@ eu\adventuria\chatsystem\ChatCommand.class
 eu\adventuria\chatsystem\ChatEvent.class
 eu\adventuria\chatsystem\ArangoMethods.class
 eu\adventuria\chatsystem\Messages.class
+eu\adventuria\chatsystem\ScoreboardManager.class
 eu\adventuria\chatsystem\ConfigManager.class
 eu\adventuria\chatsystem\ChatSystem.class
