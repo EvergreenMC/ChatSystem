@@ -1,7 +1,6 @@
-F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\adventuria\chatsystem\ChatCommand.java
-F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\adventuria\chatsystem\ChatEvent.java
-F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\adventuria\chatsystem\ScoreboardManager.java
-F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\adventuria\chatsystem\ArangoUtils.java
-F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\adventuria\chatsystem\ArangoMethods.java
-F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\adventuria\chatsystem\Messages.java
-F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\adventuria\chatsystem\ChatSystem.java
+F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\evergreenmc\chatsystem\utils\ArangoMethods.java
+F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\evergreenmc\chatsystem\ChatSystem.java
+F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\evergreenmc\chatsystem\utils\ArangoUtils.java
+F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\evergreenmc\chatsystem\utils\Messages.java
+F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\evergreenmc\chatsystem\ChatCommand.java
+F:\IntelliJ IDEA\ChatSystem\src\main\java\eu\evergreenmc\chatsystem\ChatEvent.java
