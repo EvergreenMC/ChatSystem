@@ -1,9 +1,13 @@
-package eu.adventuria.chatsystem;
+package eu.evergreenmc.chatsystem;
 
+import eu.evergreenmc.chatsystem.utils.ArangoMethods;
+import eu.evergreenmc.chatsystem.utils.ArangoUtils;
+import eu.evergreenmc.chatsystem.utils.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.ScoreboardManager;
 
 public class ChatSystem extends JavaPlugin {
 

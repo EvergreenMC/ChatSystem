@@ -1,5 +1,7 @@
-package eu.adventuria.chatsystem;
+package eu.evergreenmc.chatsystem;
 
+import eu.evergreenmc.chatsystem.utils.ArangoMethods;
+import eu.evergreenmc.chatsystem.utils.Messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

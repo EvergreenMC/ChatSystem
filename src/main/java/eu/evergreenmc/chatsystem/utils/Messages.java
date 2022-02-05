@@ -1,4 +1,6 @@
-package eu.adventuria.chatsystem;
+package eu.evergreenmc.chatsystem.utils;
+
+import eu.evergreenmc.chatsystem.ChatSystem;
 
 public class Messages {
 

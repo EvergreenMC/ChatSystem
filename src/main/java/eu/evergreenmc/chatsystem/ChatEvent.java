@@ -1,9 +1,10 @@
-package eu.adventuria.chatsystem;
+package eu.evergreenmc.chatsystem;
 
 import de.dytanic.cloudnet.ext.bridge.BaseComponentMessenger;
 import de.dytanic.cloudnet.ext.bridge.BridgePlayerManager;
 import de.dytanic.cloudnet.ext.bridge.player.ICloudPlayer;
 
+import eu.evergreenmc.chatsystem.utils.ArangoMethods;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.cacheddata.CachedPermissionData;
 import net.luckperms.api.model.user.UserManager;

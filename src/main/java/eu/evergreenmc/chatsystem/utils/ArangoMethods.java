@@ -1,4 +1,4 @@
-package eu.adventuria.chatsystem;
+package eu.evergreenmc.chatsystem.utils;
 
 import com.arangodb.ArangoCursor;
 import com.arangodb.ArangoDBException;

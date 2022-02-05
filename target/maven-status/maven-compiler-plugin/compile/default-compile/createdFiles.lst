@@ -1,7 +1,6 @@
-eu\adventuria\chatsystem\ArangoUtils.class
-eu\adventuria\chatsystem\ChatCommand.class
-eu\adventuria\chatsystem\ChatEvent.class
-eu\adventuria\chatsystem\ArangoMethods.class
-eu\adventuria\chatsystem\Messages.class
-eu\adventuria\chatsystem\ScoreboardManager.class
-eu\adventuria\chatsystem\ChatSystem.class
+eu\evergreenmc\chatsystem\ChatCommand.class
+eu\evergreenmc\chatsystem\utils\ArangoUtils.class
+eu\evergreenmc\chatsystem\ChatSystem.class
+eu\evergreenmc\chatsystem\ChatEvent.class
+eu\evergreenmc\chatsystem\utils\ArangoMethods.class
+eu\evergreenmc\chatsystem\utils\Messages.class
