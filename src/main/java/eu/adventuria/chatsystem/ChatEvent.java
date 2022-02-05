@@ -54,19 +54,38 @@ public class ChatEvent implements Listener {
         prefix_team = pl.getConfig().getString("chat.team");
     }
 
-    public final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
-
-    private String format(String msg) {
-        Matcher match = pattern.matcher(msg);
-        while (match.find()) {
-            String color = msg.substring(match.start(), match.end());
+    public String format(String msg) {
+        final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}]");
+        msg = ChatColor.translateAlternateColorCodes('&', msg);
+        Matcher matcher = pattern.matcher(msg);
+        while(matcher.find()) {
+            String color = msg.substring(matcher.start(), matcher.end());
             msg = msg.replace(color, ChatColor.of(color) + "");
-            match = pattern.matcher(msg);
+            matcher = pattern.matcher(msg);
         }
-        return ChatColor.translateAlternateColorCodes('&', msg);
+        return msg;
     }
 
-   @EventHandler(priority = EventPriority.HIGH)
+    public static String hex(String message) {
+        Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
+        Matcher matcher = pattern.matcher(message);
+        while (matcher.find()) {
+            String hexCode = message.substring(matcher.start(), matcher.end());
+            String replaceSharp = hexCode.replace('#', 'x');
+
+            char[] ch = replaceSharp.toCharArray();
+            StringBuilder builder = new StringBuilder("");
+            for (char c : ch) {
+                builder.append("&" + c);
+            }
+
+            message = message.replace(hexCode, builder.toString());
+            matcher = pattern.matcher(message);
+        }
+        return ChatColor.translateAlternateColorCodes('&', message);
+    }
+
+   @EventHandler(priority = EventPriority.HIGHEST)
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         ICloudPlayer cp = BridgePlayerManager.getInstance().getOnlinePlayer(p.getUniqueId());
@@ -80,27 +99,23 @@ public class ChatEvent implements Listener {
 
         String msg = format(e.getMessage());
 
-        if (msg.length() > 0) {
-            if (e.getMessage().startsWith("%") && p.hasPermission("adventuria.chat.team")) {
-                final BaseComponent[] base = new ComponentBuilder(prefix_team).appendLegacy(format(nickname)).appendLegacy(" §8» §7" + format(msg.replace("%", ""))).create();
-                BaseComponentMessenger.broadcastMessage(base, "adventuria.chat.team");
-                e.setCancelled(true);
-            } else if (e.getMessage().startsWith("@l")) {
-                sendLocalMessage(e, msg.replace("@l", ""));
-            } else if (e.getMessage().startsWith("@g") && e.getMessage().startsWith("!")) {
-                final BaseComponent[] base = new ComponentBuilder(prefix_global).appendLegacy("§8[" + format(color) + displayname + "§8] " + format(nickname)).appendLegacy(" §8» §7" + format(msg.replaceAll("%", "%%").replace("@g", ""))).create();
-                BaseComponentMessenger.broadcastMessage(base);
-                e.setCancelled(true);
-            } else {
-                e.setCancelled(true);
-                final BaseComponent[] base = new ComponentBuilder("").appendLegacy("§8[" + format(color) + displayname + "§8] " + format(nickname) + " §8» §7" + format(msg)).create();
-                for(Player all : Bukkit.getOnlinePlayers()){
-                    all.sendMessage(base);
-                }
-            }
-        } else {
-            p.sendMessage(Messages.prefix + "§cDu musst mindestens einen Buchstaben schreiben!");
-        }
+       if (e.getMessage().startsWith("%") && p.hasPermission("adventuria.chat.team")) {
+           final BaseComponent[] base = new ComponentBuilder(prefix_team).appendLegacy(format(nickname)).appendLegacy(" §8» §7" + format(msg.replace("%", ""))).create();
+           BaseComponentMessenger.broadcastMessage(base, "adventuria.chat.team");
+           e.setCancelled(true);
+       } else if (e.getMessage().startsWith("@l")) {
+           sendLocalMessage(e, msg.replace("@l", ""));
+       } else if (e.getMessage().startsWith("@g") || e.getMessage().startsWith("!")) {
+           final BaseComponent[] base = new ComponentBuilder(prefix_global).appendLegacy("§8[" + format(color) + displayname + "§8] " + format(nickname)).appendLegacy(" §8» §7" + format(msg.replaceAll("%", "%%").replace("@g", "").replace("!", ""))).create();
+           BaseComponentMessenger.broadcastMessage(base);
+           e.setCancelled(true);
+       } else {
+           e.setCancelled(true);
+           final BaseComponent[] base = new ComponentBuilder("").appendLegacy("§8[" + format(color) + displayname + "§8] " + format(nickname) + " §8» §7" + format(msg)).create();
+           for(Player all : Bukkit.getOnlinePlayers()){
+               all.sendMessage(base);
+           }
+       }
     }
 
     @EventHandler(priority = EventPriority.HIGH)
@@ -121,7 +136,7 @@ public class ChatEvent implements Listener {
         this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
         this.nickname = color + p.getName();
 
-        e.setQuitMessage("§7Der Spieler " + format(nickname) + " §7hat das Spiel verlasen.");
+        e.setQuitMessage("§7Der Spieler " + format(nickname) + " §7hat das Spiel verlassen.");
     }
 
     public void sendLocalMessage(AsyncPlayerChatEvent e, String msg) {
@@ -141,13 +156,13 @@ public class ChatEvent implements Listener {
             }
         }
 
-        e.setFormat(format(prefix_local + "§8[" + color + rankname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%")));
+        e.setFormat(format(prefix_local + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%")));
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.hasPermission("advisystem.spychat.see") &&
                     !plo.contains(player.getName()) && this.nickname != player
                     .getName())
-                player.sendMessage(format(prefix_spy + "§8[" + color + rankname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%")));
+                player.sendMessage(format(prefix_spy + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%")));
         }
     }
 }
