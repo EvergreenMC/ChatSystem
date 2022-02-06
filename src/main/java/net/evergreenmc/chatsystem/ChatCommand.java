@@ -1,7 +1,7 @@
-package eu.evergreenmc.chatsystem;
+package net.evergreenmc.chatsystem;
 
-import eu.evergreenmc.chatsystem.utils.ArangoMethods;
-import eu.evergreenmc.chatsystem.utils.Messages;
+import net.evergreenmc.chatsystem.utils.ArangoMethods;
+import net.evergreenmc.chatsystem.utils.Messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

@@ -1,19 +1,17 @@
-package eu.evergreenmc.chatsystem;
+package net.evergreenmc.chatsystem;
 
-import eu.evergreenmc.chatsystem.utils.ArangoMethods;
-import eu.evergreenmc.chatsystem.utils.ArangoUtils;
-import eu.evergreenmc.chatsystem.utils.Messages;
+import net.evergreenmc.chatsystem.utils.ArangoMethods;
+import net.evergreenmc.chatsystem.utils.ArangoUtils;
+import net.evergreenmc.chatsystem.utils.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.ScoreboardManager;
 
 public class ChatSystem extends JavaPlugin {
 
     private String prefix;
     private ConsoleCommandSender cs = Bukkit.getConsoleSender();
-    private static ScoreboardManager instance2;
 
     public static ChatSystem instance;
 
@@ -45,10 +43,6 @@ public class ChatSystem extends JavaPlugin {
         FileConfiguration cfg = this.getConfig();
         cfg.options().copyDefaults(true);
         this.saveConfig();
-    }
-
-    public String getPrefix() {
-        return prefix;
     }
 
     private void enableEvents(){

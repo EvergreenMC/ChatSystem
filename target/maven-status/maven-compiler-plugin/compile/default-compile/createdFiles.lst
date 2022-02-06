@@ -1,6 +1,6 @@
-eu\evergreenmc\chatsystem\ChatCommand.class
-eu\evergreenmc\chatsystem\utils\ArangoUtils.class
-eu\evergreenmc\chatsystem\ChatSystem.class
-eu\evergreenmc\chatsystem\ChatEvent.class
-eu\evergreenmc\chatsystem\utils\ArangoMethods.class
-eu\evergreenmc\chatsystem\utils\Messages.class
+net\evergreenmc\chatsystem\utils\ArangoMethods.class
+net\evergreenmc\chatsystem\utils\Messages.class
+net\evergreenmc\chatsystem\ChatSystem.class
+net\evergreenmc\chatsystem\ChatCommand.class
+net\evergreenmc\chatsystem\ChatEvent.class
+net\evergreenmc\chatsystem\utils\ArangoUtils.class

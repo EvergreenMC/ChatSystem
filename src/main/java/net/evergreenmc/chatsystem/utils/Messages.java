@@ -1,6 +1,6 @@
-package eu.evergreenmc.chatsystem.utils;
+package net.evergreenmc.chatsystem.utils;
 
-import eu.evergreenmc.chatsystem.ChatSystem;
+import net.evergreenmc.chatsystem.ChatSystem;
 
 public class Messages {
 

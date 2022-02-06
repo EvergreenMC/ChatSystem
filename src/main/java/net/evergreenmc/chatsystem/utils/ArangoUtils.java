@@ -1,11 +1,11 @@
-package eu.evergreenmc.chatsystem.utils;
+package net.evergreenmc.chatsystem.utils;
 
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
 import com.arangodb.ArangoDatabase;
 import com.arangodb.entity.BaseDocument;
 import com.arangodb.entity.CollectionEntity;
-import eu.evergreenmc.chatsystem.ChatSystem;
+import net.evergreenmc.chatsystem.ChatSystem;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;
 

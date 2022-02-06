@@ -1,9 +1,11 @@
-package eu.evergreenmc.chatsystem.utils;
+package net.evergreenmc.chatsystem.utils;
 
 import com.arangodb.ArangoCursor;
 import com.arangodb.ArangoDBException;
 import com.arangodb.entity.BaseDocument;
 import org.bukkit.Bukkit;
+
+import java.util.ArrayList;
 
 public class ArangoMethods {
 
@@ -14,9 +16,9 @@ public class ArangoMethods {
         if(ArangoUtils.arangoDB.db(database).collection(Collection).getDocument(uuid, BaseDocument.class) != null){
             BaseDocument base = new BaseDocument();
             if(getGlobalChatBoolean(uuid) == true){
-                base.addAttribute("boolean", false);
+                base.updateAttribute("boolean", false);
             }else{
-                base.addAttribute("boolean", true);
+                base.updateAttribute("boolean", true);
             }
             base.setKey(uuid);
             ArangoUtils.createDocument(database, Collection, base, uuid);
@@ -40,7 +42,7 @@ public class ArangoMethods {
 
             while (cursor.hasNext()) {
                 return (Boolean) cursor.next().getAttribute("boolean");
-            };
+            }
         } catch (ArangoDBException e) {
             e.printStackTrace();
         }

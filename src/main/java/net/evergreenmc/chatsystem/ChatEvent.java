@@ -1,10 +1,10 @@
-package eu.evergreenmc.chatsystem;
+package net.evergreenmc.chatsystem;
 
 import de.dytanic.cloudnet.ext.bridge.BaseComponentMessenger;
 import de.dytanic.cloudnet.ext.bridge.BridgePlayerManager;
 import de.dytanic.cloudnet.ext.bridge.player.ICloudPlayer;
 
-import eu.evergreenmc.chatsystem.utils.ArangoMethods;
+import net.evergreenmc.chatsystem.utils.ArangoMethods;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.cacheddata.CachedPermissionData;
 import net.luckperms.api.model.user.UserManager;
@@ -44,8 +44,10 @@ public class ChatEvent implements Listener {
     String prefix_team;
 
     private static UserManager um = LuckPermsProvider.get().getUserManager();
+    public final Pattern pattern;
 
     public ChatEvent(ChatSystem instance) {
+        this.pattern = Pattern.compile("#[a-fA-F0-9]{6}");
         pl = instance;
         Bukkit.getPluginManager().registerEvents(this, instance);
 
@@ -55,16 +57,14 @@ public class ChatEvent implements Listener {
         prefix_team = pl.getConfig().getString("chat.team");
     }
 
-    public String format(String msg) {
-        final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}]");
-        msg = ChatColor.translateAlternateColorCodes('&', msg);
-        Matcher matcher = pattern.matcher(msg);
-        while(matcher.find()) {
-            String color = msg.substring(matcher.start(), matcher.end());
+    private String format(String msg) {
+        Matcher match = this.pattern.matcher(msg);
+        while (match.find()) {
+            String color = msg.substring(match.start(), match.end());
             msg = msg.replace(color, ChatColor.of(color) + "");
-            matcher = pattern.matcher(msg);
+            match = this.pattern.matcher(msg);
         }
-        return msg;
+        return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
 
@@ -87,11 +87,12 @@ public class ChatEvent implements Listener {
            BaseComponentMessenger.broadcastMessage(base, "adventuria.chat.team");
            e.setCancelled(true);
        } else if (e.getMessage().startsWith("@l")) {
+           e.setCancelled(true);
            sendLocalMessage(e, msg.replace("@l", ""));
        } else if (e.getMessage().startsWith("@g") || e.getMessage().startsWith("!")) {
+           e.setCancelled(true);
            final BaseComponent[] base = new ComponentBuilder(prefix_global).appendLegacy("§8[" + format(color) + displayname + "§8] " + format(nickname)).appendLegacy(" §8» §7" + format(msg.replaceAll("%", "%%").replace("@g", "").replace("!", ""))).create();
            BaseComponentMessenger.broadcastMessage(base);
-           e.setCancelled(true);
        } else {
            e.setCancelled(true);
            final BaseComponent[] base = new ComponentBuilder("").appendLegacy("§8[" + format(color) + displayname + "§8] " + format(nickname) + " §8» §7" + format(msg)).create();
