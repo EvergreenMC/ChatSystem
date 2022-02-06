@@ -1,6 +1,5 @@
 package net.evergreenmc.chatsystem;
 
-import net.evergreenmc.chatsystem.utils.ArangoMethods;
 import net.evergreenmc.chatsystem.utils.ArangoUtils;
 import net.evergreenmc.chatsystem.utils.Messages;
 import org.bukkit.Bukkit;
@@ -27,7 +26,6 @@ public class ChatSystem extends JavaPlugin {
         enableCommands();
 
         if(ArangoUtils.isConnected()){
-            ArangoUtils.createDatabase(ArangoMethods.database);
             ArangoUtils.createCollection(ArangoUtils.database, "ChatSystem");
 
             cs.sendMessage(prefix + "§aDas Plugin wurde aktiviert.");
@@ -49,9 +47,7 @@ public class ChatSystem extends JavaPlugin {
         new ChatEvent(instance);
     }
 
-    private void enableCommands(){
-        getCommand("chat").setExecutor(new ChatCommand());
-    }
+    private void enableCommands(){}
 
     public static ChatSystem getInstance() {
         return instance;

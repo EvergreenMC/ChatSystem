@@ -4,7 +4,6 @@ import de.dytanic.cloudnet.ext.bridge.BaseComponentMessenger;
 import de.dytanic.cloudnet.ext.bridge.BridgePlayerManager;
 import de.dytanic.cloudnet.ext.bridge.player.ICloudPlayer;
 
-import net.evergreenmc.chatsystem.utils.ArangoMethods;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.cacheddata.CachedPermissionData;
 import net.luckperms.api.model.user.UserManager;
@@ -110,7 +109,6 @@ public class ChatEvent implements Listener {
         this.nickname = color + p.getName();
 
         e.setJoinMessage("§7Der Spieler " + format(nickname) + " §7hat das Spiel betreten.");
-        ArangoMethods.createDefault(p.getUniqueId().toString());
     }
 
     @EventHandler
