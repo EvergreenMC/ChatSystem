@@ -87,7 +87,27 @@ public class ChatEvent implements Listener {
            e.setCancelled(true);
        } else if (e.getMessage().startsWith("@l")) {
            e.setCancelled(true);
-           sendLocalMessage(e, msg.replace("@l", ""));
+           int radius = 60;
+           Location pl = p.getLocation();
+           List<String> plo = new ArrayList<>();
+           for (Player near : Bukkit.getOnlinePlayers()) {
+               plo.add(near.getName());
+               if (near.getWorld() != p.getWorld()) {
+                   e.getRecipients().remove(near);
+                   plo.remove(near.getName());
+               }
+               if (near.getWorld() == p.getWorld() && near.getLocation().distance(pl) > radius) {
+                   e.getRecipients().remove(near);
+                   plo.remove(near.getName());
+               }
+           }
+
+           for (Player player : Bukkit.getOnlinePlayers()) {
+               if (player.hasPermission("advisystem.spychat.see") &&
+                       !plo.contains(player.getName()) && this.nickname != player
+                       .getName())
+                   player.sendMessage(format(prefix_spy + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%").replace("@l", "")));
+           }
        } else if (e.getMessage().startsWith("@g") || e.getMessage().startsWith("!")) {
            e.setCancelled(true);
            final BaseComponent[] base = new ComponentBuilder(prefix_global).appendLegacy("§8[" + format(color) + displayname + "§8] " + format(nickname)).appendLegacy(" §8» §7" + format(msg.replaceAll("%", "%%").replace("@g", "").replace("!", ""))).create();
@@ -119,32 +139,5 @@ public class ChatEvent implements Listener {
         this.nickname = color + p.getName();
 
         e.setQuitMessage("§7Der Spieler " + format(nickname) + " §7hat das Spiel verlassen.");
-    }
-
-    public void sendLocalMessage(AsyncPlayerChatEvent e, String msg) {
-        int radius = 60;
-        Player p = e.getPlayer();
-        Location pl = p.getLocation();
-        List<String> plo = new ArrayList<>();
-        for (Player near : Bukkit.getOnlinePlayers()) {
-            plo.add(near.getName());
-            if (near.getWorld() != p.getWorld()) {
-                e.getRecipients().remove(near);
-                plo.remove(near.getName());
-            }
-            if (near.getWorld() == p.getWorld() && near.getLocation().distance(pl) > radius) {
-                e.getRecipients().remove(near);
-                plo.remove(near.getName());
-            }
-        }
-
-        e.setFormat(format(prefix_local + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%")));
-
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            if (player.hasPermission("advisystem.spychat.see") &&
-                    !plo.contains(player.getName()) && this.nickname != player
-                    .getName())
-                player.sendMessage(format(prefix_spy + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%")));
-        }
     }
 }
