@@ -1,8 +1,6 @@
 package net.evergreenmc.chatsystem;
 
 import de.dytanic.cloudnet.ext.bridge.BaseComponentMessenger;
-import de.dytanic.cloudnet.ext.bridge.BridgePlayerManager;
-import de.dytanic.cloudnet.ext.bridge.player.ICloudPlayer;
 
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.cacheddata.CachedPermissionData;
@@ -31,6 +29,7 @@ public class ChatEvent implements Listener {
 
     static ChatSystem pl;
     static CachedPermissionData Permission;
+
     static String nickname;
     static String color;
     static String rank;
@@ -42,7 +41,7 @@ public class ChatEvent implements Listener {
     String prefix_spy;
     String prefix_team;
 
-    private static UserManager um = LuckPermsProvider.get().getUserManager();
+    private static final UserManager um = LuckPermsProvider.get().getUserManager();
     public final Pattern pattern;
 
     public ChatEvent(ChatSystem instance) {
@@ -70,14 +69,14 @@ public class ChatEvent implements Listener {
    @EventHandler(priority = EventPriority.HIGHEST)
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
-        ICloudPlayer cp = BridgePlayerManager.getInstance().getOnlinePlayer(p.getUniqueId());
+        //ICloudPlayer cp = BridgePlayerManager.getInstance().getOnlinePlayer(p.getUniqueId());
 
-        this.rank = um.getUser(p.getUniqueId()).getPrimaryGroup();
-        this.displayname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getDisplayName();
-        this.rankname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getCachedData().getMetaData().getSuffix();
-        this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix();
-        this.nickname = color + p.getName();
-        this.Permission = LuckPermsProvider.get().getUserManager().getUser(p.getUniqueId()).getCachedData().getPermissionData();
+        rank = um.getUser(p.getUniqueId()).getPrimaryGroup();
+        displayname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getDisplayName();
+        rankname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getCachedData().getMetaData().getSuffix();
+        color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix();
+        nickname = color + p.getName();
+        Permission = LuckPermsProvider.get().getUserManager().getUser(p.getUniqueId()).getCachedData().getPermissionData();
 
         String msg = format(e.getMessage());
 
@@ -103,9 +102,7 @@ public class ChatEvent implements Listener {
            }
 
            for (Player player : Bukkit.getOnlinePlayers()) {
-               if (player.hasPermission("advisystem.spychat.see") &&
-                       !plo.contains(player.getName()) && this.nickname != player
-                       .getName())
+               if (player.hasPermission("advisystem.spychat.see") && !plo.contains(player.getName()) && p.getName() != player.getName())
                    player.sendMessage(format(prefix_spy + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%").replace("@l", "")));
            }
        } else if (e.getMessage().startsWith("@g") || e.getMessage().startsWith("!")) {
@@ -121,12 +118,12 @@ public class ChatEvent implements Listener {
        }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
 
-        this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix();
-        this.nickname = color + p.getName();
+        color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix();
+        nickname = color + p.getName();
 
         e.setJoinMessage("§7Der Spieler " + format(nickname) + " §7hat das Spiel betreten.");
     }
@@ -135,8 +132,8 @@ public class ChatEvent implements Listener {
     public void onQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
 
-        this.color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
-        this.nickname = color + p.getName();
+        color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix().replace("&", "§");
+        nickname = color + p.getName();
 
         e.setQuitMessage("§7Der Spieler " + format(nickname) + " §7hat das Spiel verlassen.");
     }

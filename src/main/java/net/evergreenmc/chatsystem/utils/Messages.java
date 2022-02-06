@@ -4,6 +4,9 @@ import net.evergreenmc.chatsystem.ChatSystem;
 
 public class Messages {
 
-    public static String prefix = ChatSystem.getInstance().getConfig().getString("prefix.global");
-    public static String Warning = ChatSystem.getInstance().getConfig().getString("prefix.warning");
+    public static ConfigManager cm = ChatSystem.getInstance().cm;
+
+
+    public static String prefix = cm.getString("prefix.global");
+    public static String Warning = cm.getString("prefix.warning");
 }

@@ -79,7 +79,7 @@
         <dependency>
             <groupId>com.arangodb</groupId>
             <artifactId>arangodb-java-driver</artifactId>
-            <version>6.14.0</version>
+            <version>6.16.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -125,7 +125,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.1</version>
                 <configuration>
-                    <outputDirectory>F:\IntelliJ IDEA\ChatSystem\out</outputDirectory>
+                    <outputDirectory>F:\IntelliJ IDEA\ChatSystem\target\out</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

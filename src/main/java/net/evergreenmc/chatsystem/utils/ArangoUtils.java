@@ -6,18 +6,19 @@ import com.arangodb.ArangoDatabase;
 import com.arangodb.entity.BaseDocument;
 import com.arangodb.entity.CollectionEntity;
 import net.evergreenmc.chatsystem.ChatSystem;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.jetbrains.annotations.NotNull;
+
+import java.util.logging.Level;
 
 public class ArangoUtils {
 
-    static @NotNull FileConfiguration cf = ChatSystem.getInstance().getConfig();
+    public static ConfigManager cf = ChatSystem.getInstance().cm;
+    private static ChatSystem pl = ChatSystem.getInstance();
 
-    public static int port = cf.getInt("arango.port");
-    public static String host = cf.getString("arango.host");
-    public static String user = cf.getString("arango.user");
-    public static String password = cf.getString("arango.password");
-    public static String database = cf.getString("arango.database");
+    public static int port = cf.getInt("database.port");
+    public static String host = cf.getString("database.host");
+    public static String user = cf.getString("database.user");
+    public static String password = cf.getString("database.password");
+    public static String database = cf.getString("database.database");
 
     public static ArangoDB arangoDB = new ArangoDB.Builder().host(host, port).user(user).password(password).build();
 
@@ -27,11 +28,12 @@ public class ArangoUtils {
             db.exists();
             return true;
         }catch (ArangoDBException e){
-            System.out.println(Messages.Warning + "");
-            System.out.println(Messages.Warning + "§8==================== §4WARNUNG §8====================");
-            System.out.println(Messages.Warning + "§cDie Verbindung zur Datenbank konnte nicht hergestellt werden!");
-            System.out.println(Messages.Warning + "§8==================== §4WARNUNG §8====================");
-            System.out.println(Messages.Warning + "");
+            pl.getLogger().log(Level.WARNING, "");
+            pl.getLogger().log(Level.WARNING, "§8==================== §4WARNUNG §8====================");
+            pl.getLogger().log(Level.WARNING, "§cDie Verbindung zur Datenbank konnte nicht hergestellt werden!");
+            pl.getLogger().log(Level.WARNING, "§8==================== §4WARNUNG §8====================");
+            pl.getLogger().log(Level.WARNING, "");
+
             ChatSystem.getInstance().getPluginLoader().disablePlugin(ChatSystem.getInstance());
             return false;
         }
