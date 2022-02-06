@@ -2,15 +2,11 @@ package net.evergreenmc.chatsystem;
 
 import net.evergreenmc.chatsystem.utils.ArangoUtils;
 import net.evergreenmc.chatsystem.utils.ConfigManager;
-import net.evergreenmc.chatsystem.utils.Messages;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
 
 public class ChatSystem extends JavaPlugin {
-
-    private String prefix;
 
     public static ChatSystem instance;
     public ConfigManager cm = new ConfigManager(getDataFolder().toPath().toString(), "config.yml");
@@ -31,7 +27,6 @@ public class ChatSystem extends JavaPlugin {
         cm.create("database.database", "database");
         cm.create("database.port", 8529);
 
-        prefix = Messages.prefix;
         enableEvents();
         enableCommands();
 
@@ -45,12 +40,6 @@ public class ChatSystem extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().log(Level.INFO, " Das Plugin wurde deaktiviert");
-    }
-
-    private void loadConfig(){
-        FileConfiguration cfg = this.getConfig();
-        cfg.options().copyDefaults(true);
-        this.saveConfig();
     }
 
     private void enableEvents(){

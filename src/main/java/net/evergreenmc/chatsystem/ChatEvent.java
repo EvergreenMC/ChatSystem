@@ -102,7 +102,7 @@ public class ChatEvent implements Listener {
            }
 
            for (Player player : Bukkit.getOnlinePlayers()) {
-               if (player.hasPermission("advisystem.spychat.see") && !plo.contains(player.getName()) && p.getName() != player.getName())
+               if (player.hasPermission("evergreen.spychat.see") && !plo.contains(player.getName()) && p.getName() != player.getName())
                    player.sendMessage(format(prefix_spy + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%").replace("@l", "")));
            }
        } else if (e.getMessage().startsWith("@g") || e.getMessage().startsWith("!")) {
