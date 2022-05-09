@@ -45,7 +45,7 @@ public class ArangoUtils {
 
             if(!db.exists()){
                 db.create();
-                System.out.println(Messages.prefix + "§7Die Datenbank §8'§a" + database +"§8' §7wurde erstellt.");
+                System.out.println(ChatSystem.getPrefix() + "§7Die Datenbank §8'§a" + database +"§8' §7wurde erstellt.");
             }
         }
     }
@@ -54,9 +54,9 @@ public class ArangoUtils {
         if(isConnected() && !arangoDB.db(database).collection(collection).exists()){
             try {
                 CollectionEntity myArangoCollection = arangoDB.db(database).createCollection(collection);
-                System.out.println(Messages.prefix + "Collection erstellt: " + myArangoCollection.getName());
+                pl.getLogger().log(Level.INFO, "Collection erstellt: " + myArangoCollection.getName());
             } catch (ArangoDBException e) {
-                System.err.println(Messages.prefix + "Fehler beim erstellen einer collection: " + collection + "; " + e.getMessage());
+                pl.getLogger().log(Level.WARNING, "Fehler beim erstellen einer collection: " + collection + "; " + e.getMessage());
             }
         }
     }
@@ -66,13 +66,13 @@ public class ArangoUtils {
             try {
                 arangoDB.db(database).collection(collection).insertDocument(document);
             } catch (ArangoDBException e) {
-                System.err.println(Messages.prefix + "Fehler beim erstellen eines Dokuments. " + e.getMessage());
+                pl.getLogger().log(Level.WARNING, "Fehler beim erstellen eines Dokuments. " + e.getMessage());
             }
         }else{
             try {
                 arangoDB.db(database).collection(collection).updateDocument(key, document);
             } catch (ArangoDBException e) {
-                System.err.println(Messages.prefix + "Fehler beim updaten eines Dokuments. " + e.getMessage());
+                pl.getLogger().log(Level.WARNING, "Fehler beim updaten eines Dokuments. " + e.getMessage());
             }
         }
     }
@@ -82,10 +82,10 @@ public class ArangoUtils {
             try {
                 arangoDB.db(database).collection(collection).deleteDocument(key);
             } catch (ArangoDBException e) {
-                System.err.println("Fehler beim Löschen eines Dokuments. " + e.getMessage());
+                pl.getLogger().log(Level.WARNING,"Fehler beim Löschen eines Dokuments. " + e.getMessage());
             }
         }else{
-            System.err.println("Diese Collection existiert nicht!");
+            pl.getLogger().log(Level.WARNING,"Diese Collection existiert nicht!");
         }
     }
 

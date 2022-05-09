@@ -47,7 +47,6 @@ public class ChatEvent implements Listener {
     public ChatEvent(ChatSystem instance) {
         this.pattern = Pattern.compile("#[a-fA-F0-9]{6}");
         pl = instance;
-        Bukkit.getPluginManager().registerEvents(this, instance);
 
         prefix_global = pl.getConfig().getString("chat.global");
         prefix_local = pl.getConfig().getString("chat.local");

@@ -6,7 +6,7 @@
 
     <groupId>net.evergreenmc</groupId>
     <artifactId>ChatSystem</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1.0</version>
 
     <repositories>
         <repository>
@@ -62,12 +62,6 @@
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.18.1-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.github.waterfallmc</groupId>
-            <artifactId>waterfall-api</artifactId>
-            <version>1.18-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

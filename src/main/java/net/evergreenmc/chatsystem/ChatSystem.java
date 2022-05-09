@@ -4,16 +4,17 @@ import net.evergreenmc.chatsystem.utils.ArangoUtils;
 import net.evergreenmc.chatsystem.utils.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.logging.Level;
-
 public class ChatSystem extends JavaPlugin {
 
     public static ChatSystem instance;
     public ConfigManager cm = new ConfigManager(getDataFolder().toPath().toString(), "config.yml");
 
+    public static String prefix;
+
     @Override
     public void onEnable() {
         instance = this;
+        prefix = cm.getString("prefix.global");
 
         cm.create("prefix.global", "§8§l| §aEvergreenMC §8» §7");
         cm.create("prefix.warning", "§8§l| §eWarning §8» §c");
@@ -27,19 +28,16 @@ public class ChatSystem extends JavaPlugin {
         cm.create("database.database", "database");
         cm.create("database.port", 8529);
 
-        enableEvents();
         enableCommands();
+        enableEvents();
 
-        if(ArangoUtils.isConnected()){
-            ArangoUtils.createCollection(ArangoUtils.database, "ChatSystem");
-
-            getLogger().log(Level.INFO, " Das Plugin wurde aktiviert");
-        }
+        ArangoUtils.createCollection(ArangoUtils.database, "ChatSystem");
+        super.onEnable();
     }
 
     @Override
     public void onDisable() {
-        getLogger().log(Level.INFO, " Das Plugin wurde deaktiviert");
+        super.onDisable();
     }
 
     private void enableEvents(){
@@ -50,5 +48,9 @@ public class ChatSystem extends JavaPlugin {
 
     public static ChatSystem getInstance() {
         return instance;
+    }
+
+    public static String getPrefix() {
+        return prefix;
     }
 }

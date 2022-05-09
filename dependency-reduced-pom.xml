@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.evergreenmc</groupId>
   <artifactId>ChatSystem</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>v1.0</version>
   <build>
     <resources>
       <resource>
@@ -222,42 +222,6 @@
         <exclusion>
           <artifactId>asm-commons</artifactId>
           <groupId>org.ow2.asm</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>io.github.waterfallmc</groupId>
-      <artifactId>waterfall-api</artifactId>
-      <version>1.18-R0.1-SNAPSHOT</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>waterfall-chat</artifactId>
-          <groupId>io.github.waterfallmc</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>waterfall-config</artifactId>
-          <groupId>io.github.waterfallmc</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>waterfall-event</artifactId>
-          <groupId>io.github.waterfallmc</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>waterfall-protocol</artifactId>
-          <groupId>io.github.waterfallmc</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>netty-transport-native-unix-common</artifactId>
-          <groupId>io.netty</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>snakeyaml</artifactId>
-          <groupId>org.yaml</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>guava</artifactId>
-          <groupId>com.google.guava</groupId>
         </exclusion>
       </exclusions>
     </dependency>
