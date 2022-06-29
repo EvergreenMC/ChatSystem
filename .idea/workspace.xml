@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ChatSystem" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fec59e62-c54c-4d6e-9a3b-810472189b66" name="Changes" comment="Upload to Github">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/commands/msgCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/ChatEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/ChatEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/ChatSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/ChatSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="ChatSystem/invalid/Minecraft" />
+    </ignored-facets>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="showPreview" value="true" />
+  </component>
+  <component name="ProjectId" id="1yE2TPQkMajiLw9BM9EWMjlNSGh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;
+  }
+}</component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="main" />
+    </force-push-targets>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fec59e62-c54c-4d6e-9a3b-810472189b66" name="Changes" comment="" />
+      <created>1631802435366</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631802435366</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Update">
+      <created>1634553919809</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1634553919809</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update">
+      <created>1634554199130</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1634554199130</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update">
+      <created>1634554515157</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1634554515157</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update">
+      <created>1634554801981</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1634554801981</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Update">
+      <created>1634554874681</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1634554874681</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Update">
+      <created>1635369721394</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1635369721394</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update">
+      <created>1635370102089</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1635370102089</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update">
+      <created>1637781762668</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1637781762668</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add Maven to Jar">
+      <created>1637785705113</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1637785705113</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add Maven to Jar">
+      <created>1637785878582</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1637785878582</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update">
+      <created>1637833241310</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1637833241310</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Update">
+      <created>1637964446308</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1637964446308</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Update">
+      <created>1638567500273</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1638567500273</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Update">
+      <created>1638702289233</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1638702289233</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update">
+      <created>1638869724829</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1638869724830</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Update">
+      <created>1640129747845</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1640129747845</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Update">
+      <created>1640631931870</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1640631931870</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Update">
+      <created>1641085829073</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1641085829073</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Update">
+      <created>1642107616515</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1642107616515</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Update">
+      <created>1642438547249</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1642438547249</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Change ChatFormat">
+      <created>1642541945755</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1642541945755</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Change ChatFormat">
+      <created>1643926208991</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1643926208991</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Change ChatFormat">
+      <created>1644102254374</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1644102254374</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Change ChatFormat">
+      <created>1644102393929</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1644102393929</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Change Name of Path">
+      <created>1644102636375</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1644102636375</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Change Name of Path">
+      <created>1644102699612</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1644102699612</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Change Name of Path">
+      <created>1644103059920</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1644103059920</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Change Name of Path">
+      <created>1644103353547</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1644103353547</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Change Name of Path">
+      <created>1644106407512</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1644106407512</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Upload to Github">
+      <created>1644141209794</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1644141209794</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Upload to Github">
+      <created>1644141432145</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1644141432145</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Upload to Github">
+      <created>1644141881769</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1644141881769</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Upload to Github">
+      <created>1644142137689</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1644142137689</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Upload to Github">
+      <created>1644142915691</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1644142915691</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Upload to Github">
+      <created>1644146468198</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1644146468199</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Upload to Github">
+      <created>1644146645993</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1644146645993</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Upload to Github">
+      <created>1652125971403</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1652125971403</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.ow2.asm:asm-analysis" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-transport-native-epoll" />
+    <option featureType="dependencySupport" implementationName="java:org.javassist:javassist" />
+    <option featureType="dependencySupport" implementationName="java:org.ow2.asm:asm-tree" />
+    <option featureType="dependencySupport" implementationName="java:org.hamcrest:hamcrest-core" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-resolver" />
+    <option featureType="dependencySupport" implementationName="java:com.google.j2objc:j2objc-annotations" />
+    <option featureType="dependencySupport" implementationName="java:com.h2database:h2" />
+    <option featureType="dependencySupport" implementationName="java:com.googlecode.json-simple:json-simple" />
+    <option featureType="dependencySupport" implementationName="java:com.google.code.gson:gson" />
+    <option featureType="dependencySupport" implementationName="java:org.jline:jline" />
+    <option featureType="dependencySupport" implementationName="java:com.arangodb:arangodb-java-driver" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-transport-native-unix-common" />
+    <option featureType="dependencySupport" implementationName="java:de.dytanic.cloudnet:cloudnet-driver" />
+    <option featureType="dependencySupport" implementationName="java:de.dytanic.cloudnet:cloudnet-syncproxy" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-transport" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-codec-http" />
+    <option featureType="dependencySupport" implementationName="java:com.google.errorprone:error_prone_annotations" />
+    <option featureType="dependencySupport" implementationName="java:de.dytanic.cloudnet:cloudnet-common" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-buffer" />
+    <option featureType="dependencySupport" implementationName="java:commons-lang:commons-lang" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-common" />
+    <option featureType="dependencySupport" implementationName="java:junit:junit" />
+    <option featureType="dependencySupport" implementationName="java:net.kyori:examination-api" />
+    <option featureType="dependencySupport" implementationName="java:com.google.guava:listenablefuture" />
+    <option featureType="dependencySupport" implementationName="java:org.fusesource.jansi:jansi" />
+    <option featureType="dependencySupport" implementationName="java:de.dytanic.cloudnet:cloudnet" />
+    <option featureType="dependencySupport" implementationName="java:net.kyori:adventure-key" />
+    <option featureType="dependencySupport" implementationName="java:net.kyori:adventure-text-serializer-plain" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-codec" />
+    <option featureType="dependencySupport" implementationName="java:org.jetbrains:annotations" />
+    <option featureType="dependencySupport" implementationName="java:net.md-5:bungeecord-chat" />
+    <option featureType="dependencySupport" implementationName="java:net.luckperms:api" />
+    <option featureType="dependencySupport" implementationName="java:org.checkerframework:checker-qual" />
+    <option featureType="dependencySupport" implementationName="java:com.arangodb:velocypack" />
+    <option featureType="dependencySupport" implementationName="java:io.papermc.paper:paper-api" />
+    <option featureType="dependencySupport" implementationName="java:de.dytanic.cloudnet:cloudnet-bridge" />
+    <option featureType="dependencySupport" implementationName="java:org.ow2.asm:asm-commons" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-transport-native-kqueue" />
+    <option featureType="dependencySupport" implementationName="java:org.slf4j:slf4j-api" />
+    <option featureType="dependencySupport" implementationName="java:org.ow2.asm:asm" />
+    <option featureType="dependencySupport" implementationName="java:de.dytanic.cloudnet:cloudnet-wrapper-jvm" />
+    <option featureType="dependencySupport" implementationName="java:net.kyori:examination-string" />
+    <option featureType="dependencySupport" implementationName="java:com.google.code.findbugs:jsr305" />
+    <option featureType="dependencySupport" implementationName="java:com.google.guava:guava" />
+    <option featureType="dependencySupport" implementationName="java:org.yaml:snakeyaml" />
+    <option featureType="dependencySupport" implementationName="java:net.kyori:adventure-api" />
+    <option featureType="dependencySupport" implementationName="java:net.kyori:adventure-text-serializer-gson" />
+    <option featureType="com.intellij.facetType" implementationName="minecraft" />
+    <option featureType="dependencySupport" implementationName="java:io.netty:netty-handler" />
+    <option featureType="dependencySupport" implementationName="java:com.google.guava:failureaccess" />
+    <option featureType="dependencySupport" implementationName="java:it.unimi.dsi:fastutil" />
+    <option featureType="dependencySupport" implementationName="java:net.kyori:adventure-text-serializer-legacy" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.logging.log4j:log4j-api" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Add Maven to Jar" />
+    <MESSAGE value="Update" />
+    <MESSAGE value="Change ChatFormat" />
+    <MESSAGE value="Change Name of Path" />
+    <MESSAGE value="Uplaod to Github" />
+    <MESSAGE value="Upload to Github" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upload to Github" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
