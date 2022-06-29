@@ -19,7 +19,7 @@ public class ChatSystem extends JavaPlugin {
 
         cm.create("prefix.global", "§8§l| §aEvergreenMC §8» §7");
         cm.create("prefix.msg", "§8§l| §aChat §8» §7");
-        cm.create("prefix.warning", "§8§l| §eWarning §8» §c");
+        cm.create("prefix.warning", "§8§l| §eWarnung §8» §c");
         cm.create("chat.team", "§7[§b§lTeamChat§7] ");
         cm.create("chat.local", "§7[Local] ");
         cm.create("chat.global", "§7[Global] ");
@@ -32,8 +32,6 @@ public class ChatSystem extends JavaPlugin {
 
         enableCommands();
         enableEvents();
-
-        new msgCommand(this);
 
         ArangoUtils.createCollection(ArangoUtils.database, "ChatSystem");
         super.onEnable();
@@ -48,7 +46,9 @@ public class ChatSystem extends JavaPlugin {
         new ChatEvent(instance);
     }
 
-    private void enableCommands(){}
+    private void enableCommands(){
+        new msgCommand(this);
+    }
 
     public static ChatSystem getInstance() {
         return instance;

@@ -9,11 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fec59e62-c54c-4d6e-9a3b-810472189b66" name="Changes" comment="Upload to Github">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/commands/msgCommand.java" afterDir="false" />
+    <list default="true" id="fec59e62-c54c-4d6e-9a3b-810472189b66" name="Changes" comment="+ /msg command">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/ChatEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/ChatEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/ChatSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/ChatSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/commands/msgCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/evergreenmc/chatsystem/commands/msgCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatSystem-v1.0-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatSystem-v1.0-shaded.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/evergreenmc/chatsystem/ChatEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/evergreenmc/chatsystem/ChatEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/evergreenmc/chatsystem/ChatSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/evergreenmc/chatsystem/ChatSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-ChatSystem.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-ChatSystem.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/out/ChatSystem.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/out/ChatSystem.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -343,7 +348,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652125971403</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="+ /msg command">
+      <created>1656493932157</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1656493932157</updated>
+    </task>
+    <task id="LOCAL-00039" summary="+ /msg command">
+      <created>1656493955759</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1656493955759</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -421,7 +440,8 @@
     <MESSAGE value="Change Name of Path" />
     <MESSAGE value="Uplaod to Github" />
     <MESSAGE value="Upload to Github" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upload to Github" />
+    <MESSAGE value="+ /msg command" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ /msg command" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

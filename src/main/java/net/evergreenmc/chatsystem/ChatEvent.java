@@ -52,6 +52,8 @@ public class ChatEvent implements Listener {
         prefix_local = pl.getConfig().getString("chat.local");
         prefix_spy = pl.getConfig().getString("chat.spy");
         prefix_team = pl.getConfig().getString("chat.team");
+
+        pl.getServer().getPluginManager().registerEvents(this, pl);
     }
 
     private String format(String msg) {
@@ -80,9 +82,9 @@ public class ChatEvent implements Listener {
         String msg = format(e.getMessage());
 
        if (e.getMessage().startsWith("%") && p.hasPermission("adventuria.chat.team")) {
+           e.setCancelled(true);
            final BaseComponent[] base = new ComponentBuilder(prefix_team).appendLegacy(format(nickname)).appendLegacy(" §8» §7" + format(msg.replace("%", ""))).create();
            BaseComponentMessenger.broadcastMessage(base, "adventuria.chat.team");
-           e.setCancelled(true);
        } else if (e.getMessage().startsWith("@l")) {
            e.setCancelled(true);
            int radius = 60;
@@ -100,8 +102,11 @@ public class ChatEvent implements Listener {
            }
 
            for (Player player : Bukkit.getOnlinePlayers()) {
-               if (player.hasPermission("evergreen.spychat.see") && !plo.contains(player.getName()) && p.getName() != player.getName())
+               if (player.hasPermission("evergreen.spychat.see") && !plo.contains(player.getName()) && p.getName() != player.getName()){
                    player.sendMessage(format(prefix_spy + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%").replace("@l", "")));
+               }else{
+                   player.sendMessage(format("§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%").replace("@l", "")));
+               }
            }
        } else if (e.getMessage().startsWith("@g") || e.getMessage().startsWith("!")) {
            e.setCancelled(true);
