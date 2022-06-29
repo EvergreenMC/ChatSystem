@@ -93,8 +93,7 @@ public class ChatEvent implements Listener {
                if (near.getWorld() != p.getWorld()) {
                    e.getRecipients().remove(near);
                    plo.remove(near.getName());
-               }
-               if (near.getWorld() == p.getWorld() && near.getLocation().distance(pl) > radius) {
+               }else if (near.getWorld() == p.getWorld() && near.getLocation().distance(pl) > radius) {
                    e.getRecipients().remove(near);
                    plo.remove(near.getName());
                }

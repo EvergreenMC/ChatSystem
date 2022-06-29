@@ -1,5 +1,6 @@
 package net.evergreenmc.chatsystem;
 
+import net.evergreenmc.chatsystem.commands.msgCommand;
 import net.evergreenmc.chatsystem.utils.ArangoUtils;
 import net.evergreenmc.chatsystem.utils.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +18,7 @@ public class ChatSystem extends JavaPlugin {
         prefix = cm.getString("prefix.global");
 
         cm.create("prefix.global", "§8§l| §aEvergreenMC §8» §7");
+        cm.create("prefix.msg", "§8§l| §aChat §8» §7");
         cm.create("prefix.warning", "§8§l| §eWarning §8» §c");
         cm.create("chat.team", "§7[§b§lTeamChat§7] ");
         cm.create("chat.local", "§7[Local] ");
@@ -30,6 +32,8 @@ public class ChatSystem extends JavaPlugin {
 
         enableCommands();
         enableEvents();
+
+        new msgCommand(this);
 
         ArangoUtils.createCollection(ArangoUtils.database, "ChatSystem");
         super.onEnable();
