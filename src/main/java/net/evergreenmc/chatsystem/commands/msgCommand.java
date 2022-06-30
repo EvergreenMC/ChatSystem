@@ -1,25 +1,29 @@
 package net.evergreenmc.chatsystem.commands;
 
-import de.dytanic.cloudnet.CloudNet;
 import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.ext.bridge.BaseComponentMessenger;
-import de.dytanic.cloudnet.ext.bridge.node.CloudNetBridgeModule;
+import de.dytanic.cloudnet.ext.bridge.BridgePlayerManager;
 import de.dytanic.cloudnet.ext.bridge.player.ICloudPlayer;
 import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
+
 import net.evergreenmc.chatsystem.ChatSystem;
 import net.evergreenmc.chatsystem.utils.ConfigManager;
+
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.cacheddata.CachedPermissionData;
 import net.luckperms.api.model.user.UserManager;
+
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -33,7 +37,7 @@ public class msgCommand implements CommandExecutor, TabCompleter {
     public static ConfigManager cf = ChatSystem.getInstance().cm;
     private static ChatSystem pl = ChatSystem.getInstance();
     private static final UserManager um = LuckPermsProvider.get().getUserManager();
-    private static final IPlayerManager playerManager = CloudNetDriver.getInstance().getServicesRegistry().getFirstService(IPlayerManager.class);
+    private static final IPlayerManager playerManager = BridgePlayerManager.getInstance();
 
     static CachedPermissionData Permission;
 
@@ -76,6 +80,7 @@ public class msgCommand implements CommandExecutor, TabCompleter {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
+    //      ICloudPlayer cp = BridgePlayerManager.getInstance().getOnlinePlayer(p.getUniqueId());
     //      /msg <player> <message>
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String arg, @NotNull String[] args) {
