@@ -13,3 +13,4 @@ main: net.evergreenmc.chatsystem.ChatSystem
 
 commands:
   msg:
+    aliases: [msg,tell,tellraw,whisper]
