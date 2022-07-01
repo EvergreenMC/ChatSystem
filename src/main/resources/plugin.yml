@@ -2,15 +2,14 @@ name: ChatSystem
 author: xGamerTim
 version: ${project.version}
 api-version: 1.18
-depend:
-  - CloudNet-Bridge
-  - LuckPerms
 loadbefore:
   - Essentials
   - EssentialsX
+  - LuckPerms
+  - CloudNet-Bridge
 
 main: net.evergreenmc.chatsystem.ChatSystem
 
 commands:
   msg:
-    aliases: [msg,tell,tellraw,whisper]
+    aliases: [m,tell,tellraw,whisper]

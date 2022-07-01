@@ -105,7 +105,7 @@ public class ChatEvent implements Listener {
                if (player.hasPermission("evergreen.spychat.see") && !plo.contains(player.getName()) && p.getName() != player.getName()){
                    player.sendMessage(format(prefix_spy + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%").replace("@l", "")));
                }else{
-                   player.sendMessage(format("§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%").replace("@l", "")));
+                   player.sendMessage(format(prefix_local + "§8[" + color + displayname + "§8] " + nickname + " §8» §7" + msg.replaceAll("%", "%%").replace("@l", "")));
                }
            }
        } else if (e.getMessage().startsWith("@g") || e.getMessage().startsWith("!")) {

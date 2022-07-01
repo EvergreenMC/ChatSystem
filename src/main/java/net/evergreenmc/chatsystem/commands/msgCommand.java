@@ -39,20 +39,6 @@ public class msgCommand implements CommandExecutor, TabCompleter {
     private static final UserManager um = LuckPermsProvider.get().getUserManager();
     private static final IPlayerManager playerManager = BridgePlayerManager.getInstance();
 
-    static CachedPermissionData Permission;
-
-    static String nickname;
-    static String color;
-    static String rank;
-    static String displayname;
-    static String rankname;
-
-    static String targetnickname;
-    static String targetcolor;
-    static String targetrank;
-    static String targetdisplayname;
-    static String targetrankname;
-
     String prefix_global;
     String prefix_msg;
     String prefix_warning;
@@ -86,46 +72,46 @@ public class msgCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String arg, @NotNull String[] args) {
         if(sender instanceof Player){
             Player p = (Player)sender;
-            UUID uuid = null;
 
-            rank = um.getUser(p.getUniqueId()).getPrimaryGroup();
-            displayname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getDisplayName();
-            rankname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getCachedData().getMetaData().getSuffix();
-            color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix();
-            nickname = color + p.getName();
-            Permission = LuckPermsProvider.get().getUserManager().getUser(p.getUniqueId()).getCachedData().getPermissionData();
+            String rank = um.getUser(p.getUniqueId()).getPrimaryGroup();
+            String color = um.getUser(p.getUniqueId()).getCachedData().getMetaData().getPrefix();;
+            String displayname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getDisplayName();
+            String rankname = LuckPermsProvider.get().getGroupManager().getGroup(rank).getCachedData().getMetaData().getSuffix();
+            String nickname = color + p.getName();
+            CachedPermissionData Permission = LuckPermsProvider.get().getUserManager().getUser(p.getUniqueId()).getCachedData().getPermissionData();
 
             if(args.length < 2){
                 p.sendMessage(prefix_msg + "§7Nutze: /msg <spieler> <nachricht>");
             }else{
-
-                try{
-                    uuid = Bukkit.getOfflinePlayer((args[0])).getUniqueId();
-                }catch (Exception e){
-                    p.sendMessage(prefix_warning + "§7Es liegt ein Fehler vor: (msgCommand.java:92-96)");
-                }
-
-                if(playerManager.getOnlinePlayer(uuid) == null) {
+                if(um.getUser(args[0]) == null){
                     p.sendMessage(prefix_warning + "§cDer Spieler ist nicht Online!");
                 }else{
-                    targetrank = um.getUser(uuid).getPrimaryGroup();
-                    targetdisplayname = LuckPermsProvider.get().getGroupManager().getGroup(targetrank).getDisplayName();
-                    targetrankname = LuckPermsProvider.get().getGroupManager().getGroup(targetrank).getCachedData().getMetaData().getSuffix();
-                    targetcolor = um.getUser(uuid).getCachedData().getMetaData().getPrefix();
-                    targetnickname = targetcolor + Bukkit.getOfflinePlayer(uuid).getName();
+                    if(Bukkit.getOfflinePlayer(args[0]) == null){
+                        Player target = (Player) Bukkit.getOfflinePlayer(args[0]);
+                        UUID targetuuid = target.getUniqueId();
 
-                    if(args.length > 1){
-                        String msg = "";
-                        for (int x = 1; x < args.length; x++) {
-                            msg = msg + args[x] + " ";
+                        String targetrank = um.getUser(target.getName()).getPrimaryGroup();
+                        String targetcolor = um.getUser(target.getName()).getCachedData().getMetaData().getPrefix();
+                        String targetdisplayname = LuckPermsProvider.get().getGroupManager().getGroup(targetrank).getDisplayName();
+                        String targetrankname = LuckPermsProvider.get().getGroupManager().getGroup(targetrank).getCachedData().getMetaData().getSuffix();
+                        String targetnickname = targetcolor + target.getName();
+
+
+                        if(args.length > 1){
+                            String msg = "";
+                            for (int x = 1; x < args.length; x++) {
+                                msg = msg + args[x] + " ";
+                            }
+
+                            final BaseComponent[] base = new ComponentBuilder(prefix_msg).appendLegacy("§7[" + format(color) + "Ich§7] §7-> " + format(targetnickname) + "§7] " + msg).create();
+                            BaseComponentMessenger.sendMessage(p.getUniqueId(), base);
+
+                            final BaseComponent[] base1 = new ComponentBuilder(prefix_msg).appendLegacy("§7[" + format(nickname) + "§7] §7-> " + format(targetcolor) + "Ich§7] " + msg).create();
+                            BaseComponentMessenger.sendMessage(targetuuid, base1);
+
                         }
-
-                        final BaseComponent[] base = new ComponentBuilder(prefix_msg).appendLegacy("§7[" + format(color) + "Ich§7] §7-> " + format(targetnickname) + "§7] " + msg).create();
-                        BaseComponentMessenger.sendMessage(p.getUniqueId(), base);
-
-                        final BaseComponent[] base1 = new ComponentBuilder(prefix_msg).appendLegacy("§7[" + format(nickname) + "§7] §7-> " + format(targetcolor) + "Ich§7] " + msg).create();
-                        BaseComponentMessenger.sendMessage(uuid, base1);
-
+                    }else{
+                        p.sendMessage(prefix_warning + "§cDer Spieler konnte in der Datenbank nicht gefunden werden!");
                     }
                 }
             }
